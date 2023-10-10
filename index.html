@@ -40,6 +40,7 @@
 
     const moveValue = 10;
 
+
     const charElement = document.getElementById("char");
 
     function defaultPosition(element) {
@@ -49,11 +50,12 @@
 
     function getPosition(element) {
       const left = parseInt(element.style.left.replace("px", ""), 10);
-      return left 
+      return left ;
     }
 
     function setPosition(element, left) {
       element.style.left = left + "px";
+      element.style.top = top + "px"
     }
 
     function movePosition(event) {
@@ -78,25 +80,55 @@
         widthPosition = 0;
       }
 
+
+
+
+
       setPosition(charElement, widthPosition);
     }
     defaultPosition(charElement);
 
-    
-    function jump(){
-      let jumpMove = setInterval(space, 200)
-        function space(){
-          
+ 
+
+
+    let rootHeight = window.innerHeight
+    let pos = 550;
+    function jumpup(){
+      let jumpup = setInterval(spaceup, 0.1)
+        function spaceup(){
+          char.style.top = pos+ "px"
+          pos--
+          if(pos < 400){
+            clearInterval(jumpup)
+          }
         }
-    }
+        }
     
+
+    function jumpdown(){
+      let jumpdown = setInterval(spacedown,0.1)
+      function spacedown(){
+        char.style.top = pos + "px"
+        pos++
+        if(pos > 575){
+          clearInterval(jumpdown)
+        }
+      }
+    }
+
+  
+
     
     window.addEventListener('keydown', function(e){
-      switch(e.keyCode){
-        case 32 :
-          jump();
-      }
-    })
+      if(e.keyCode ==32){
+        if(pos>400){
+          jumpup();
+        }
+        if(pos <400){
+          jumpdown()
+        }
+      }}
+    )
 
     
 
