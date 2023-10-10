@@ -17,7 +17,7 @@
       position : absolute;
       top:60vh;
     }
-    
+
   </style>
 </head>
 <body>
@@ -38,7 +38,7 @@
     const arrowRightKey = "ArrowRight";
     const arrowLeftKey = "ArrowLeft";
 
-    const moveValue = 10;
+    const moveValue = 12;
 
 
     const charElement = document.getElementById("char");
@@ -74,7 +74,7 @@
       }
 
       if (toRight) {
-        widthPosition += moveValue;
+        widthPosition += moveValue  ;
         char.style.transform = ""
       }
 
@@ -93,9 +93,8 @@
  
 
 
-    let rootHeight = window.innerHeight
     let pos = 550;
-    function jumpup(){
+    function jumpUp(){
       let jumpup = setInterval(spaceup, 0.01)
         function spaceup(){
           char.style.top = pos+ "px"
@@ -108,38 +107,21 @@
               pos = pos + 1.8
               if(pos > 577 ){
                 clearInterval(jumpdown)
-              }
-            }
-            
+              }}
           }
-        }
-        }
+        }}
     
-
-    // function jumpdown(){
-    //   let jumpdown = setInterval(spacedown,0.01)
-    //   function spacedown(){
-    //     char.style.top = pos + "px"
-    //     pos = pos + 1.8
-    //     if(pos > 576){
-    //       clearInterval(jumpdown)
-    //     }
-    //   }
-    // }
-
     
     window.addEventListener('keydown', function(e){
       if(e.keyCode ==32){
-        if(pos>400){
-          jumpup();
+          jumpUp();
         }
-        // if(pos <400){
-        //   jumpdown()
-        // }
-      }}
-    )
+    })
 
-    
+
+
+
+
 
 </script>  
 </body>
