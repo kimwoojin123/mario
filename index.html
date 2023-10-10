@@ -4,12 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {margin :0; padding: 0; box-sizing: border-box;}
+    #root {
+      width: 100vw;
+      height: 100vh;
+    }
+    #char {
+      width : 2.5vw;
+      height: 5vh;
+      background-size: cover;
+      position : absolute;
+      top:60vh;
+    }
+    
+  </style>
 </head>
 <body>
   <div id="root">
+    <div id="char"></div>
   </div>
 
 <script>
+  let root = document.getElementById('root');
+  let char = document.getElementById('char');
+  root.style.backgroundImage = "url(background.jpg)"
+  char.style.backgroundImage = "url(mario.png)"
+  
+
+
+  document.addEventListener("keydown", movePosition);
+
+    const arrowRightKey = "ArrowRight";
+    const arrowLeftKey = "ArrowLeft";
+
+    const moveValue = 10;
+
+    const charElement = document.getElementById("char");
+
+    function defaultPosition(element) {
+      element.style.top = "60vh";
+      element.style.left = "0px";
+    }
+
+    function getPosition(element) {
+      const left = parseInt(element.style.left.replace("px", ""), 10);
+      return left 
+    }
+
+    function setPosition(element, left) {
+      element.style.left = left + "px";
+    }
+
+    function movePosition(event) {
+      const { key } = event;
+      const toRight = key == arrowRightKey;
+      const toLeft = key == arrowLeftKey;
+
+
+      const left = getPosition(charElement);
+
+      let widthPosition = left;
+
+      if (toLeft) {
+        widthPosition -= moveValue;
+      }
+
+      if (toRight) {
+        widthPosition += moveValue;
+      }
+
+      if (widthPosition < 0) {
+        widthPosition = 0;
+      }
+
+      setPosition(charElement, widthPosition);
+    }
+    defaultPosition(charElement);
+
+    
+    function jump(){
+      let jumpMove = setInterval(space, 200)
+        function space(){
+          
+        }
+    }
+    
+    
+    window.addEventListener('keydown', function(e){
+      switch(e.keyCode){
+        case 32 :
+          jump();
+      }
+    })
+
+    
 
 </script>  
 </body>
