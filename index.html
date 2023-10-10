@@ -70,10 +70,12 @@
 
       if (toLeft) {
         widthPosition -= moveValue;
+        char.style.transform = "scaleX(-1)"
       }
 
       if (toRight) {
         widthPosition += moveValue;
+        char.style.transform = ""
       }
 
       if (widthPosition < 0) {
