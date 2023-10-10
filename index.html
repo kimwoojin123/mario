@@ -96,29 +96,36 @@
     let rootHeight = window.innerHeight
     let pos = 550;
     function jumpup(){
-      let jumpup = setInterval(spaceup, 0.1)
+      let jumpup = setInterval(spaceup, 0.01)
         function spaceup(){
           char.style.top = pos+ "px"
-          pos--
+          pos = pos - 1.8
           if(pos < 400){
             clearInterval(jumpup)
+            let jumpdown = setInterval(spacedown, 0.01)
+            function spacedown(){
+              char.style.top = pos+ "px"
+              pos = pos + 1.8
+              if(pos > 577 ){
+                clearInterval(jumpdown)
+              }
+            }
+            
           }
         }
         }
     
 
-    function jumpdown(){
-      let jumpdown = setInterval(spacedown,0.1)
-      function spacedown(){
-        char.style.top = pos + "px"
-        pos++
-        if(pos > 575){
-          clearInterval(jumpdown)
-        }
-      }
-    }
-
-  
+    // function jumpdown(){
+    //   let jumpdown = setInterval(spacedown,0.01)
+    //   function spacedown(){
+    //     char.style.top = pos + "px"
+    //     pos = pos + 1.8
+    //     if(pos > 576){
+    //       clearInterval(jumpdown)
+    //     }
+    //   }
+    // }
 
     
     window.addEventListener('keydown', function(e){
@@ -126,9 +133,9 @@
         if(pos>400){
           jumpup();
         }
-        if(pos <400){
-          jumpdown()
-        }
+        // if(pos <400){
+        //   jumpdown()
+        // }
       }}
     )
 
